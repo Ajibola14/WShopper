@@ -2,9 +2,9 @@
     This is a simple ecommerce application to geared towards the purchase of the Apple IPhone.
 ### Screenshots
 # Home Page
-![Home](c:\HNG\wshopper\flutter_01.png\flutter_01.png)
+![Home](c:\HNG\wshopper\flutter_01.png)
 # Checkout Page
-![c:\HNG\wshopper\flutter_01.png](\flutter_02.png)
+![Cart](c:\HNG\wshopper\flutter_02.png)
 
 ### Features
 * Ability to add a product to Cart

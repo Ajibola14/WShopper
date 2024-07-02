@@ -4,7 +4,7 @@
 # Home Page
 ![Home](c:\HNG\wshopper\flutter_01.png\flutter_01.png)
 # Checkout Page
-![Home](c:\HNG\wshopper\flutter_01.png\flutter_02.png)
+![c:\HNG\wshopper\flutter_01.png](\flutter_02.png)
 
 ### Features
 * Ability to add a product to Cart

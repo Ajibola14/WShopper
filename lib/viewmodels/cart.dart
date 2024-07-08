@@ -21,7 +21,7 @@ class Cart extends ChangeNotifier {
       final messenger = scaffoldMessengerKey.currentState;
       messenger?.showMaterialBanner(
         MaterialBanner(
-          content: const Text('Product Already in cart!'),
+          content: const Text('Product added to cart!'),
           actions: [
             TextButton(
               onPressed: () {

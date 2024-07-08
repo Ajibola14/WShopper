@@ -7,8 +7,7 @@
 ![Cart](flutter_02.png)
 
 # Features
-* Ability to add a product to Cart
-* Ability to remove a product from Cart
+* Ability to add a product and remove to Cart with a double tap
 * Ability to display a product in Cart and Home Screen
 
 ## Getting Started

@@ -31,13 +31,13 @@ class _CartPageState extends State<CartPage> {
                       child: ListView.builder(
                         itemCount: value.cart.length,
                         itemBuilder: (context, index) {
-                          Product product = value.cart[index]["product"];
+                          Product product = value.cart[index];
                           return ListTile(
                             leading: SizedBox(
                               width: MediaQuery.of(context).size.width * 0.2,
                               height: MediaQuery.of(context).size.height * 0.15,
-                              child: Image.asset(
-                                product.image,
+                              child: Image.network(
+                                "https://api.timbu.cloud/images/${product.image}",
                                 fit: BoxFit.scaleDown,
                               ),
                             ),
@@ -60,47 +60,49 @@ class _CartPageState extends State<CartPage> {
                             children: [
                               Text("Total : ₦${value.totalCost}"),
                               MaterialButton(
-                                  color: Colors.blue,
-                                  onPressed: () {},
-                                  child: TextButton(
-                                    onPressed: () {
-                                      showDialog(
-                                        context: context,
-                                        builder: (context) => AlertDialog(
-                                          backgroundColor: const Color.fromARGB(
-                                              108, 194, 222, 244),
-                                          title: const Text(
-                                            "Successful Checkout",
-                                            style: TextStyle(
-                                                fontSize: 25,
-                                                fontWeight: FontWeight.w700),
-                                          ),
-                                          content: const CircleAvatar(
-                                              radius: 30,
-                                              backgroundColor: Colors.green,
-                                              child: Icon(Icons.check)),
-                                          actions: [
-                                            TextButton(
-                                                onPressed: () {
-                                                  value.cart = [];
-                                                  Navigator.of(context)
-                                                      .push(MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        const HomeScreen(),
-                                                  ));
-                                                },
-                                                child: const Text("Continue"))
-                                          ],
-                                        ),
-                                      );
-                                    },
-                                    child: const Text(
-                                      "Purchase",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.w500),
+                                color: Colors.blue,
+                                onPressed: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) => AlertDialog(
+                                      backgroundColor: Colors.white,
+                                      title: const Text(
+                                        "Successful Checkout",
+                                        style: TextStyle(
+                                            fontSize: 25,
+                                            color: Colors.green,
+                                            fontWeight: FontWeight.w700),
+                                      ),
+                                      content: const CircleAvatar(
+                                          radius: 30,
+                                          backgroundColor: Colors.green,
+                                          child: Icon(Icons.check)),
+                                      actions: [
+                                        TextButton(
+                                            onPressed: () {
+                                              value.cart = [];
+                                              Navigator.of(context)
+                                                  .push(MaterialPageRoute(
+                                                builder: (context) =>
+                                                    const HomeScreen(),
+                                              ));
+                                            },
+                                            child: const Text(
+                                              "Finish",
+                                              style:
+                                                  TextStyle(color: Colors.blue),
+                                            ))
+                                      ],
                                     ),
-                                  )),
+                                  );
+                                },
+                                child: const Text(
+                                  "Purchase",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ),
                             ]))
                   ],
                 );

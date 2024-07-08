@@ -1,31 +1,23 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import '../globals.dart';
 import '../models/products.dart';
+import 'dart:async';
 
 class Cart extends ChangeNotifier {
-  List<Map<String, dynamic>> cart = [];
+  List<Product> cart = [];
 
-  void addToCart(Product product) {
-    // Check if the product is already in the cart
-    bool found = false;
-    for (Map<String, dynamic> item in cart) {
-      if (item.containsValue(product.name)) {
-        found = true;
-        break;
+  bool inCart(Product product) {
+    for (Product item in cart) {
+      if (item == product) {
+        return true;
       }
     }
+    return false;
+  }
 
-    // Add the product if it was not found in the cart
-    if (!found) {
-      cart.add({
-        "product": product,
-        "productName": product.name,
-        "price": product.price
-      });
-    } else {
-
+  void addToCart(Product product) {
+    if (!inCart(product)) {
+      cart.add(product);
       final messenger = scaffoldMessengerKey.currentState;
       messenger?.showMaterialBanner(
         MaterialBanner(
@@ -49,17 +41,17 @@ class Cart extends ChangeNotifier {
   }
 
   void removeFromCart(Product product) {
-    cart.removeWhere((element) => element["product"] == product);
+    cart.removeWhere((element) => element == product);
     notifyListeners();
   }
 
-  int _totalCost() {
-    int cost = 0;
+  double _totalCost() {
+    double cost = 0;
     for (var item in cart) {
-      cost += item["price"] as int;
+      cost += item.price;
     }
     return cost;
   }
 
-  int get totalCost => _totalCost();
+  double get totalCost => _totalCost();
 }
